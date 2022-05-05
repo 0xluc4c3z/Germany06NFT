@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 
-contract QatarNFT is ERC721 {
+contract PlayersNFT is ERC721 {
 
     using Counters for Counters.Counter;
 
@@ -137,6 +137,8 @@ contract QatarNFT is ERC721 {
             revert MintRevert("Los fondos no son suficientes");
         }
 
+        s_owner.transfer(msg.value);
+
         s_jugador[contador_jugadores] = contadorArqueros;
         _safeMint(msg.sender, contador_jugadores);     
         s_contador_jugadores.increment();
@@ -160,6 +162,8 @@ contract QatarNFT is ERC721 {
         if(msg.value < s_mintPrice){
             revert MintRevert("Los fondos no son suficientes");
         }
+
+        s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorDefensas;
         _safeMint(msg.sender, contador_jugadores);     
@@ -185,6 +189,8 @@ contract QatarNFT is ERC721 {
             revert MintRevert("Los fondos no son suficientes");
         }
 
+        s_owner.transfer(msg.value);
+
         s_jugador[contador_jugadores] = contadorMediocentros;
         _safeMint(msg.sender, contador_jugadores);     
         s_contador_jugadores.increment();
@@ -209,6 +215,8 @@ contract QatarNFT is ERC721 {
             revert MintRevert("Los fondos no son suficientes");
         }
 
+        s_owner.transfer(msg.value);
+
         s_jugador[contador_jugadores] = contadorVolantes;
         _safeMint(msg.sender, contador_jugadores);    
         s_contador_jugadores.increment();
@@ -232,6 +240,8 @@ contract QatarNFT is ERC721 {
         if(msg.value < s_mintPrice){
             revert MintRevert("Los fondos no son suficientes");
         }
+
+        s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorDelanteros;
         _safeMint(msg.sender, contador_jugadores);       
