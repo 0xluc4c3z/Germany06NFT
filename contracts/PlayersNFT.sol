@@ -28,6 +28,12 @@ contract PlayersNFT is ERC721 {
 
     string public baseTokenURI = "";
 
+    event MintArquero(address indexed direccion, uint256 player);
+    event MintDefensa(address indexed direccion, uint256 player);
+    event MintMediocentro(address indexed direccion, uint256 player);
+    event MintVolante(address indexed direccion, uint256 player);
+    event MintDelantero(address indexed direccion, uint256 player);
+
     error MintRevert(string messege);
     
     mapping (uint256 => uint256) s_jugador;
@@ -87,36 +93,52 @@ contract PlayersNFT is ERC721 {
         s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorArqueros; 
-        _safeMint(msg.sender, contador_jugadores);    
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintArquero(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorArqueros.increment();
         contador_jugadores = s_contador_jugadores.current();
 
         
         s_jugador[contador_jugadores] = contadorDefensas;
-        _safeMint(msg.sender, contador_jugadores); 
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintDefensa(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorDefensas.increment();
         contador_jugadores = s_contador_jugadores.current();
 
 
         s_jugador[contador_jugadores] = contadorMediocentros;
-        _safeMint(msg.sender, contador_jugadores);    
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintMediocentro(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorMediocentros.increment();
         contador_jugadores = s_contador_jugadores.current();
 
 
         s_jugador[contador_jugadores] = contadorVolantes;
-        _safeMint(msg.sender, contador_jugadores);    
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintVolante(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorVolantes.increment();
         contador_jugadores = s_contador_jugadores.current();
 
         s_jugador[contador_jugadores] = contadorDelanteros;
-        _safeMint(msg.sender, contador_jugadores);      
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintDelantero(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorDelanteros.increment();
+
     }
 
     function mintArquero() public payable {
@@ -140,7 +162,10 @@ contract PlayersNFT is ERC721 {
         s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorArqueros;
-        _safeMint(msg.sender, contador_jugadores);     
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintArquero(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorArqueros.increment();
     } 
@@ -166,7 +191,10 @@ contract PlayersNFT is ERC721 {
         s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorDefensas;
-        _safeMint(msg.sender, contador_jugadores);     
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintDefensa(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorDefensas.increment();
     } 
@@ -192,7 +220,10 @@ contract PlayersNFT is ERC721 {
         s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorMediocentros;
-        _safeMint(msg.sender, contador_jugadores);     
+        _safeMint(msg.sender, contador_jugadores); 
+
+        emit MintMediocentro(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorMediocentros.increment();
     } 
@@ -218,7 +249,10 @@ contract PlayersNFT is ERC721 {
         s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorVolantes;
-        _safeMint(msg.sender, contador_jugadores);    
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintVolante(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorVolantes.increment();
     } 
@@ -244,7 +278,10 @@ contract PlayersNFT is ERC721 {
         s_owner.transfer(msg.value);
 
         s_jugador[contador_jugadores] = contadorDelanteros;
-        _safeMint(msg.sender, contador_jugadores);       
+        _safeMint(msg.sender, contador_jugadores);
+
+        emit MintDelantero(msg.sender, contador_jugadores);
+
         s_contador_jugadores.increment();
         s_contadorDelanteros.increment();
     }
