@@ -2,12 +2,12 @@ const hre = require("hardhat");
 
 async function main() {
   
-  const PlayersNFT = await hre.ethers.getContractFactory("PlayersNFT");
-  const playersnft = await PlayersNFT.deploy();
+  const Germany06NFT = await hre.ethers.getContractFactory("Germany06NFT");
+  const germany06NFT = await Germany06NFT.deploy();
 
-  await playersnft.deployed();
+  await germany06NFT.deployed();
 
-  console.log("PlayersNFT deployed to:", playersnft.address);
+  console.log("Germany06NFT deployed to:", germany06NFT.address);
 }
 
 
